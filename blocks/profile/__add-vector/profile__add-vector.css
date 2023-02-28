@@ -1,0 +1,8 @@
+.profile__add-vector {
+}
+
+@media screen and (max-width: 320px) {
+  .profile__add-vector {
+    width: 16px;
+  }
+}
