@@ -1,3 +1,18 @@
 .elements__like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 20px;
+  padding: 0;
+  background-color: #ffffff;
+  border: 0;
+  box-sizing: border-box;
+  width: 22px;
+  height: 19px;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+  cursor: pointer;
+}
+.elements__like-button:hover {
+  opacity: 0.5;
 }
