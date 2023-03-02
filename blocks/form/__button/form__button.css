@@ -1,0 +1,26 @@
+.form__button {
+  width: 358px;
+  height: 50px;
+  background-color: #000000;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  color: #ffffff;
+  border: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 50px auto 0 auto;
+}
+
+@media screen and (max-width: 619px) {
+  .form__button {
+    width: 238px;
+    height: 46px;
+    margin-top: 46px;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}

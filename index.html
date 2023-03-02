@@ -26,63 +26,114 @@
           </div>
         </div>
         <div class="profile__add-button">
-          <img class="profile__add-vector" src="./images/Vector.png" alt="Кнопка добавления">
+          <img
+            class="profile__add-vector"
+            src="./images/Vector.svg"
+            alt="Кнопка добавления"
+          />
         </div>
-        </section>
       </section>
       <section class="elements">
         <div class="elements__card">
           <div class="elements__image-contanier">
-            <img class="elements__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+            <img
+              class="elements__image"
+              src="./images/Karachaevsk.jpg"
+              alt="Карачаевск"
+            />
           </div>
           <div class="elements__text">
             <h2 class="elements__title">Карачаевск</h2>
-            <img class="elements__like-button" src="./images/Vector like.svg" alt="Лайк">
+            <img
+              class="elements__like-button"
+              src="./images/Vector like.svg"
+              alt="Лайк"
+            />
           </div>
         </div>
         <div class="elements__card">
           <div class="elements__image-contanier">
-            <img class="elements__image" src="./images/Elbrus.png" alt="Гора Эльбрус">
+            <img
+              class="elements__image"
+              src="./images/Elbrus.png"
+              alt="Гора Эльбрус"
+            />
           </div>
           <div class="elements__text">
             <h2 class="elements__title">Гора Эльбрус</h2>
-            <img class="elements__like-button" src="./images/Vector like.svg" alt="Лайк">
+            <img
+              class="elements__like-button"
+              src="./images/Vector like.svg"
+              alt="Лайк"
+            />
           </div>
         </div>
         <div class="elements__card">
           <div class="elements__image-contanier">
-            <img class="elements__image" src="./images/Dombai.png" alt="Домбай">
+            <img
+              class="elements__image"
+              src="./images/Dombai.png"
+              alt="Домбай"
+            />
           </div>
           <div class="elements__text">
             <h2 class="elements__title">Домбай</h2>
-            <img class="elements__like-button" src="./images/Vector like.svg" alt="Лайк">
+            <img
+              class="elements__like-button"
+              src="./images/Vector like.svg"
+              alt="Лайк"
+            />
           </div>
         </div>
         <div class="elements__card">
           <div class="elements__image-contanier">
-            <img class="elements__image" src="./images/Elbrus.png" alt="Эльбрус">
+            <img
+              class="elements__image"
+              src="./images/Elbrus.png"
+              alt="Эльбрус"
+            />
           </div>
           <div class="elements__text">
             <h2 class="elements__title">Гора Эльбрус</h2>
-            <img class="elements__like-button" src="./images/Vector like.svg" alt="Лайк">
+            <img
+              class="elements__like-button"
+              src="./images/Vector like.svg"
+              alt="Лайк"
+            />
           </div>
         </div>
         <div class="elements__card">
           <div class="elements__image-contanier">
-            <img class="elements__image" src="./images/Dombai.png" alt="Домбай">
+            <img
+              class="elements__image"
+              src="./images/Dombai.png"
+              alt="Домбай"
+            />
           </div>
           <div class="elements__text">
             <h2 class="elements__title">Домбай</h2>
-            <img class="elements__like-button" src="./images/Vector like.svg" alt="Лайк">
+            <img
+              class="elements__like-button"
+              src="./images/Vector like.svg"
+              alt="Лайк"
+            />
           </div>
         </div>
         <div class="elements__card">
           <div class="elements__image-contanier">
-            <img class="elements__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+            <img
+              class="elements__image"
+              src="./images/Karachaevsk.jpg"
+              alt="Карачаевск"
+            />
           </div>
           <div class="elements__text">
             <h2 class="elements__title">Карачаево-Черкесия</h2>
-            <img class="elements__like-button" src="./images/Vector like.svg" alt="Лайк">
+            <img
+              class="elements__like-button"
+              src="./images/Vector like.svg"
+              alt="Лайк"
+            />
           </div>
         </div>
       </section>
@@ -90,5 +141,41 @@
     <footer class="footer">
       <p class="footer__text">© 2023 Mesto Russia</p>
     </footer>
+    <div class="popup popup_opened">
+      <div class="popup__contanier">
+        <img
+          class="popup__close"
+          src="./images/Close Icon.svg"
+          alt="Кнопка закрытия"
+        />
+        <form class="form">
+          <fieldset class="form__date">
+            <h2 class="form__heading">Редактировать профиль</h2>
+            <input
+              class="form__input-name"
+              type="text"
+              name="name"
+              placeholder="Жак-Ив Кусто"
+              required
+            />
+            <input
+              class="form__input-job"
+              type="text"
+              name="job"
+              placeholder="Исследователь океана"
+              required
+            />
+          </fieldset>
+          <fieldset class="form__handlers">
+            <input
+              class="form__button"
+              type="submit"
+              name="Сохранить"
+              value="Сохранить"
+            />
+          </fieldset>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

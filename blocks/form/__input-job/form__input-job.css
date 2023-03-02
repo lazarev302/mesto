@@ -1,0 +1,23 @@
+.form__input-job {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  border: 0;
+  border-bottom: 1px solid #bcbcc4;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 0 0 8px 0;
+  margin: 31px 0 0 0;
+}
+
+.form__input-job::placeholder {
+  color: black;
+}
+
+@media screen and (max-width: 619px) {
+  .form__input-job {
+    margin-top: 32px;
+  }
+}
