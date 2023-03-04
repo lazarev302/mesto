@@ -4,7 +4,7 @@
   justify-content: center;
   margin-right: 20px;
   padding: 0;
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
   border: 0;
   box-sizing: border-box;
   width: 22px;
@@ -12,6 +12,9 @@
   opacity: 1;
   transition: opacity 0.2s linear;
   cursor: pointer;
+  background-image: url(../../../images/Vector\ like.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .elements__like-button:hover {
   opacity: 0.5;
