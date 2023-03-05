@@ -12,15 +12,15 @@ popupOpenButtonElement.addEventListener("click", togglePopupVisibiliti);
 popupCloseButtonElement.addEventListener("click", togglePopupVisibiliti);
 
 let formElement = popupElement.querySelector(".form");
-let nameInputElement = formElement.querySelector(".form__input-name");
-let jobInputElement = formElement.querySelector(".form__input-job");
-let saveButtonElement = formElement.querySelector(".form__handlers");
+let nameInputElement = formElement.querySelector(".form__input_name_value");
+let jobInputElement = formElement.querySelector(".form__input_job_value");
+let saveButtonElement = formElement.querySelector(".form__button");
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
 
-  nameInput = formElement.querySelector(".form__input-name").value;
-  jobInput = formElement.querySelector(".form__input-job").value;
+  nameInput = formElement.querySelector(".form__input_name_value").value;
+  jobInput = formElement.querySelector(".form__input_job_value").value;
 
   document.querySelector(".profile__title");
   document.querySelector(".profile__subtitle");

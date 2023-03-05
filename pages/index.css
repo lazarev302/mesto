@@ -26,7 +26,7 @@
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__date/form__date.css);
 @import url(../blocks/form/__heading/form__heading.css);
-@import url(../blocks/form/__input-name/form__input-name.css);
-@import url(../blocks/form/__input-job/form__input-job.css);
-@import url(../blocks/form/__handlers/form__handlers.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_job/form__input_job_value.css);
+@import url(../blocks/form/__input/_name/form__input_name_value.css);
 @import url(../blocks/form/__button/form__button.css);
