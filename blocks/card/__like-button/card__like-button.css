@@ -1,4 +1,4 @@
-.elements__like-button {
+.card__like-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,10 +16,10 @@
   background-position: center center;
   background-repeat: no-repeat;
 }
-.elements__like-button:hover {
+.card__like-button:hover {
   opacity: 0.5;
 }
 
-.elements__like-button:active {
+.card__like-button:active {
   background-image: url(../../../images/Active\ like.svg);
 }
