@@ -12,10 +12,6 @@
   margin: 31px 0 0 0;
 }
 
-.form__input::placeholder {
-  color: black;
-}
-
 @media screen and (max-width: 619px) {
   .form__input {
     margin-top: 32px;
