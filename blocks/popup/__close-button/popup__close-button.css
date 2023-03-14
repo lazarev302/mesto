@@ -11,6 +11,9 @@
   opacity: 1;
   transition: opacity 0.2s linear;
   cursor: pointer;
+  background-image: url(../../../images/Close\ vector.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .popup__close-button:hover {
   opacity: 0.6;
@@ -18,8 +21,10 @@
 
 @media screen and (max-width: 619px) {
   .popup__close-button {
+    background-size: 20px;
     width: 20px;
     height: 20px;
+    top: -35px;
     right: 0;
   }
 }

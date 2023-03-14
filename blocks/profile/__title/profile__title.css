@@ -9,7 +9,7 @@
   white-space: nowrap;
   overflow: hidden;
   grid-area: title;
-  max-width: 303px;
+  width: 303px;
 }
 
 @media screen and (max-width: 806px) {
@@ -17,7 +17,8 @@
     font-size: 27px;
     line-height: 1.22;
     text-align: center;
-    padding-left: 12px;
-    max-width: 196px;
+    padding-top: 1px;
+    padding-left: 9px;
+    width: 196px;
   }
 }

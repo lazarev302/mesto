@@ -3,9 +3,9 @@
   align-items: center;
   justify-content: center;
   margin-left: 9px;
-  margin-top: 15px;
+  margin-top: 14.5px;
   grid-area: image;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   border: 1px solid #ffffff;
   box-sizing: border-box;
   width: 24px;
@@ -13,6 +13,9 @@
   opacity: 1;
   transition: opacity 0.2s linear;
   cursor: pointer;
+  background-image: url(../../../images/Editing\ vector.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .profile__edit-button:hover {
   opacity: 0.6;
@@ -20,9 +23,10 @@
 
 @media screen and (max-width: 1060px) {
   .profile__edit-button {
+    background-size: 7.5px;
     width: 18px;
     height: 18px;
-    margin-left: 10px;
-    margin-top: 8px;
+    margin-left: 4px;
+    margin-top: 9px;
   }
 }
