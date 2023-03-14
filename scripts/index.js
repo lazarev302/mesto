@@ -1,4 +1,4 @@
-let popupElement = document.querySelector(".popup");
+let popupElement = document.querySelector(".popup_profile");
 let popupCloseButtonElement = popupElement.querySelector(
   ".popup__close-button"
 );
