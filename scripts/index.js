@@ -35,6 +35,69 @@ function handleFormSubmit(evt) {
 
 formElement.addEventListener("submit", handleFormSubmit);
 
+let initialCards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
+let cardsContanier = document.querySelector(".elements");
+let cardTemplate = cardsContanier.querySelector("#card-template").content;
+
+function createCard(data) {
+  let cloneElement = cardTemplate.cloneNode(true);
+  cloneElement.querySelector(".card__title").textContent = data.name;
+  cloneElement.querySelector(".card__image").src = data.link;
+
+  setEventListeners(cloneElement);
+  addLikelisteners(cloneElement);
+
+  cardsContanier.append(cloneElement);
+}
+
+initialCards.forEach(createCard);
+
+function hendleDelete(evt) {
+  const card = evt.target.closest(".card");
+  card.remove();
+}
+function setEventListeners(cloneElement) {
+  cloneElement
+    .querySelector(".card__delete-button")
+    .addEventListener("click", hendleDelete);
+}
+
+function activeLike(evt) {
+  const likeElement = evt.target.classList.toggle("card__like-button_active");
+}
+function addLikelisteners(cloneElement) {
+  cloneElement
+    .querySelector(".card__like-button")
+    .addEventListener("click", activeLike);
+}
+//дальше всё
+
 let popupPlaceElement = document.querySelector(".popup_place");
 let popupPlaceCloseButtonElement = popupPlaceElement.querySelector(
   ".popup__close-button"
