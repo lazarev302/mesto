@@ -139,15 +139,19 @@ let imageInputElement = formPlaceElement.querySelector(
 function handleCardSubmit(evt) {
   evt.preventDefault();
 
-  const newCard = createCard({
+  let newCard = createCard({
     name: placeInputElement.value,
     link: imageInputElement.value,
   });
 
-  cardsContanier.prepend(newCard);
+  renderCard();
   closePlacePopup();
 }
 
 formPlaceElement.addEventListener("submit", handleCardSubmit);
+
+function renderCard() {
+  createCard.prepend;
+}
 
 // Попап с картинкой открытие/закрытие
