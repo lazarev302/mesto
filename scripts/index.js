@@ -80,7 +80,6 @@ function createCard(data) {
 
   setEventListeners(cloneElement);
   addLikelisteners(cloneElement);
-  openImagePopup("click", cloneElement);
 
   cardsContanier.prepend(cloneElement);
 }
@@ -155,15 +154,4 @@ function renderCard() {
   createCard.prepend;
 }
 
-// попап с большой картинкой открытие\закрытие
-let popupImageElement = document.querySelector(".popup_image");
-let popupEnlargedImageElement = popupImageElement.querySelector(
-  ".popup__enlarged-image"
-);
-
-function openImagePopup(evt) {
-  /*popupImageElement.evt.target.classList.toggle("popup_opened");
-  imageInputElement.value = popupEnlargedImageElement.src;*/
-  console.log(popupImageElement.evt.target);
-  console.log(evt.target);
-}
+// Попап с картинкой открытие/закрытие
