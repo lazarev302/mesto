@@ -1,5 +1,8 @@
 .popup_opened {
+<<<<<<< HEAD
   display: flex;
+=======
+>>>>>>> develop
   visibility: visible;
   opacity: 1;
 }
