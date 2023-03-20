@@ -77,10 +77,11 @@ function createCard(data) {
   let cloneElement = cardTemplate.cloneNode(true);
   cloneElement.querySelector(".card__title").textContent = data.name;
   cloneElement.querySelector(".card__image").src = data.link;
+  cloneElement.querySelector(".card__image").alt = data.name;
 
   setEventListeners(cloneElement);
   addLikelisteners(cloneElement);
-  openImagePopup("click", cloneElement);
+  addImagelisteners(cloneElement);
 
   cardsContanier.prepend(cloneElement);
 }
@@ -157,12 +158,22 @@ function renderCard() {
 
 // Попап с картинкой открытие/закрытие
 let popupImageElement = document.querySelector(".popup_image");
-let popupEnlargedImageElement = popupImageElement.querySelector(
-  ".popup__enlarged-image"
+let popupImageCloseButtonElement = popupImageElement.querySelector(
+  ".popup__close-button"
 );
 function openImagePopup(evt) {
-  /*popupImageElement.evt.target.classList.toggle("popup_opened");
-  imageInputElement.value = popupEnlargedImageElement.src;*/
-  console.log(popupImageElement.evt.target);
-  console.log(evt.target);
+  popupImageElement.classList.toggle("popup_opened");
+  document.querySelector(".popup__enlarged-image").src = evt.target.src;
+  document.querySelector(".popup__title").textContent = evt.target.alt;
 }
+
+function addImagelisteners(cloneElement) {
+  cloneElement
+    .querySelector(".card__image")
+    .addEventListener("click", openImagePopup);
+}
+
+function closeImagePopup() {
+  popupImageElement.classList.remove("popup_opened");
+}
+popupImageCloseButtonElement.addEventListener("click", closeImagePopup);

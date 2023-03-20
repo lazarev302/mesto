@@ -1,4 +1,6 @@
 .form {
+  background-color: #ffffff;
+  border-radius: 10px;
   width: 430px;
   border: 0;
   display: flex;
