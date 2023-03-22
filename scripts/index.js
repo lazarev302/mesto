@@ -85,13 +85,13 @@ function createCard(data) {
   return cloneElement;
 }
 
-function renderCard(element) {
+function addCard(element) {
   const newCard = createCard(element);
   cardsContanier.prepend(newCard);
 }
 
 function render() {
-  initialCards.forEach(renderCard);
+  initialCards.forEach(addCard);
 }
 
 render();
@@ -99,7 +99,7 @@ render();
 function handleCardSubmit(evt) {
   evt.preventDefault();
 
-  renderCard({
+  addCard({
     name: placeInputElement.value,
     link: imageInputElement.value,
   });
@@ -164,10 +164,14 @@ const popupImageElement = document.querySelector(".popup_image");
 const popupImageCloseButtonElement = popupImageElement.querySelector(
   ".popup__close-button"
 );
+const enlargedImageElement = document.querySelector(".popup__enlarged-image");
+const imageCaptionElement = document.querySelector(".popup__title");
+
 function openImagePopup(evt) {
   popupImageElement.classList.toggle("popup_opened");
-  document.querySelector(".popup__enlarged-image").src = evt.target.src;
-  document.querySelector(".popup__title").textContent = evt.target.alt;
+  enlargedImageElement.src = evt.target.src;
+  enlargedImageElement.alt = evt.target.alt;
+  imageCaptionElement.textContent = evt.target.alt;
 }
 
 function addImagelisteners(cloneElement) {
