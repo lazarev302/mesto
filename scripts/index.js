@@ -7,15 +7,22 @@ const popupProfileOpenButtonElement = document.querySelector(
   ".profile__edit-button"
 );
 
-const openProfilePopup = function () {
-  popupProfileElement.classList.add("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
+function openProfilePopup() {
+  openPopup(popupProfileElement);
   nameInputElement.value = profileTitleElement.textContent;
   jobInputElement.value = profileSubtitleElement.textContent;
-};
+}
 
-const closeProfilePopup = function () {
-  popupProfileElement.classList.remove("popup_opened");
-};
+function closeProfilePopup() {
+  closePopup(popupProfileElement);
+}
 
 popupProfileOpenButtonElement.addEventListener("click", openProfilePopup);
 popupProfileCloseButtonElement.addEventListener("click", closeProfilePopup);
@@ -75,9 +82,11 @@ const cardTemplate = cardsContanier.querySelector("#card-template").content;
 
 function createCard(data) {
   const cloneElement = cardTemplate.cloneNode(true);
-  cloneElement.querySelector(".card__title").textContent = data.name;
-  cloneElement.querySelector(".card__image").src = data.link;
-  cloneElement.querySelector(".card__image").alt = data.name;
+  const image = cloneElement.querySelector(".card__image");
+  const title = cloneElement.querySelector(".card__title");
+  title.textContent = data.name;
+  image.src = data.link;
+  image.alt = data.name;
 
   setEventListeners(cloneElement);
   addLikelisteners(cloneElement);
@@ -137,13 +146,15 @@ const popupPlaceOpenButtonElement = document.querySelector(
   ".profile__add-button"
 );
 
-const openPlacePopup = function () {
-  popupPlaceElement.classList.add("popup_opened");
-};
+function openPlacePopup() {
+  openPopup(popupPlaceElement);
+}
 
-const closePlacePopup = function () {
-  popupPlaceElement.classList.remove("popup_opened");
-};
+function closePlacePopup() {
+  closePopup(popupPlaceElement);
+  placeInputElement.value = "";
+  imageInputElement.value = "";
+}
 
 popupPlaceOpenButtonElement.addEventListener("click", openPlacePopup);
 popupPlaceCloseButtonElement.addEventListener("click", closePlacePopup);
@@ -168,7 +179,7 @@ const enlargedImageElement = document.querySelector(".popup__enlarged-image");
 const imageCaptionElement = document.querySelector(".popup__title");
 
 function openImagePopup(evt) {
-  popupImageElement.classList.toggle("popup_opened");
+  openPopup(popupImageElement);
   enlargedImageElement.src = evt.target.src;
   enlargedImageElement.alt = evt.target.alt;
   imageCaptionElement.textContent = evt.target.alt;
@@ -181,6 +192,6 @@ function addImagelisteners(cloneElement) {
 }
 
 function closeImagePopup() {
-  popupImageElement.classList.remove("popup_opened");
+  closePopup(popupImageElement);
 }
 popupImageCloseButtonElement.addEventListener("click", closeImagePopup);
