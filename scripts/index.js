@@ -38,7 +38,7 @@ const jobInputElement = formProfileElement.querySelector(
 const profileTitleElement = document.querySelector(".profile__title");
 const profileSubtitleElement = document.querySelector(".profile__subtitle");
 
-function handleFormSubmit(evt) {
+function submitEditProfileForm(evt) {
   evt.preventDefault();
 
   profileTitleElement.textContent = nameInputElement.value;
@@ -46,7 +46,7 @@ function handleFormSubmit(evt) {
   closeProfilePopup();
 }
 
-formProfileElement.addEventListener("submit", handleFormSubmit);
+formProfileElement.addEventListener("submit", submitEditProfileForm);
 
 // Массив
 const initialCards = [
@@ -99,11 +99,11 @@ function addCard(element) {
   cardsContanier.prepend(newCard);
 }
 
-function render() {
+function renderInitialCards() {
   initialCards.forEach(addCard);
 }
 
-render();
+renderInitialCards();
 
 function handleCardSubmit(evt) {
   evt.preventDefault();
@@ -152,8 +152,7 @@ function openPlacePopup() {
 
 function closePlacePopup() {
   closePopup(popupPlaceElement);
-  placeInputElement.value = "";
-  imageInputElement.value = "";
+  formPlaceElement.reset();
 }
 
 popupPlaceOpenButtonElement.addEventListener("click", openPlacePopup);
