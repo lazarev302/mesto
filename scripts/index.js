@@ -1,4 +1,4 @@
-// Попап редактирования профиля открытие/закрытие
+// Попап редактирования профиля
 const popupProfileElement = document.querySelector(".popup_profile");
 const popupProfileCloseButtonElement = popupProfileElement.querySelector(
   ".popup__close-button"
