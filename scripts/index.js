@@ -14,6 +14,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
+
 function openProfilePopup() {
   openPopup(popupProfileElement);
   nameInputElement.value = profileTitleElement.textContent;
@@ -88,7 +89,7 @@ function createCard(data) {
   image.src = data.link;
   image.alt = data.name;
 
-  setEventListeners(cloneElement);
+  setEventListener(cloneElement);
   addLikelisteners(cloneElement);
   addImagelisteners(cloneElement);
   return cloneElement;
@@ -121,7 +122,7 @@ function hendleDelete(evt) {
   const card = evt.target.closest(".card");
   card.remove();
 }
-function setEventListeners(cloneElement) {
+function setEventListener(cloneElement) {
   cloneElement
     .querySelector(".card__delete-button")
     .addEventListener("click", hendleDelete);

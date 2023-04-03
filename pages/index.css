@@ -29,6 +29,9 @@
 @import url(../blocks/form/__date/form__date.css);
 @import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_error/form__input_error.css);
+@import url(../blocks/form/__error/form__error.css);
 @import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__button/_invalid/form__button_invalid.css);
 @import url(../blocks/popup/__enlarged-image/popup__enlarged-image.css);
 @import url(../blocks/popup/__title/popup__title.css);
