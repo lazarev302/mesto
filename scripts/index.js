@@ -76,6 +76,7 @@ const initialCards = [
 //Универсальная функция открытия
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closePopupEsc);
 }
 //Редактирование профиля
 const openProfilePopup = function () {
@@ -98,6 +99,14 @@ function openImagePopup(evt) {
 //Универсальная функция закрытия
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.addEventListener("keydown", closePopupEsc);
+}
+//Закрытие клавишей Esc
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector(".popup_opened");
+    closePopup(popupOpened);
+  }
 }
 //Редактирование профиля
 function closeProfilePopup() {
