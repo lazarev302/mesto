@@ -3,10 +3,10 @@ const validationConfig = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_invalid",
-  inputErrorClass: "form__input_error", //- border
-  errorClass: "form__error", // - span
+  inputErrorClass: "form__input_error",
 };
 
+//Обработчик submit на каждую форму, отключить перезагрузку страницы при submit
 const enableValidation = ({ formSelector, ...rest }) => {
   const forms = Array.from(document.querySelectorAll(formSelector));
   forms.forEach((form) => {
@@ -17,6 +17,7 @@ const enableValidation = ({ formSelector, ...rest }) => {
   });
 };
 
+//Обработчик input на каждое поле
 const setEventListeners = (
   form,
   { inputSelector, submitButtonSelector, ...rest }
@@ -36,31 +37,58 @@ const setEventListeners = (
   });
 };
 
+// Контейнер текста ошибки для каждого поля
 const checkInputValidity = (input, { inputErrorClass, ...rest }) => {
   const cuttentInputErrorContanier = document.querySelector(
     `#${input.id}-error`
   );
-  if (input.checkValidity()) {
-    cuttentInputErrorContanier.textContent = "";
-    input.classList.remove(inputErrorClass);
+  if (input.validity.valid) {
+    hideErrorMessage(input, cuttentInputErrorContanier, {
+      inputErrorClass,
+      ...rest,
+    });
   } else {
-    cuttentInputErrorContanier.textContent = input.validationMessage;
-    input.classList.add(inputErrorClass);
+    cshowErrorMessage(input, cuttentInputErrorContanier, {
+      inputErrorClass,
+      ...rest,
+    });
   }
 };
+//Cкрыть сообщение об ошибке
+const hideErrorMessage = (
+  input,
+  cuttentInputErrorContanier,
+  { inputErrorClass, ...rest }
+) => {
+  cuttentInputErrorContanier.textContent = "";
+  input.classList.remove(inputErrorClass);
+};
+//Показать сообщение об ошибке
+const cshowErrorMessage = (
+  input,
+  cuttentInputErrorContanier,
+  { inputErrorClass, ...rest }
+) => {
+  input.classList.add(inputErrorClass);
+  cuttentInputErrorContanier.textContent = input.validationMessage;
+};
 
+//Проверка на наличие невалидных полей
 const hasInvalidInput = (formInputs) => {
   return formInputs.some((item) => !item.validity.valid);
 };
 
-const enableButton = (button, { inactiveButtonClass, activeButtonClass }) => {
+//Активная кнопка
+const enableButton = (button, { inactiveButtonClass }) => {
   button.classList.remove(inactiveButtonClass);
   button.disabled = false;
 };
 
-const disableButton = (button, { inactiveButtonClass, activeButtonClass }) => {
+//Неактивная кнопка
+const disableButton = (button, { inactiveButtonClass }) => {
   button.classList.add(inactiveButtonClass);
   button.disabled = true;
 };
 
+//Вызов функции проверки
 enableValidation(validationConfig);

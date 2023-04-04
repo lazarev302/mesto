@@ -9,17 +9,9 @@ const popupProfileOpenButtonElement = document.querySelector(
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEsc);
 }
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.addEventListener("keydown", closePopupEsc);
-}
-function closePopupEsc(evt) {
-  if (evt.key === "Escape") {
-    const popupOpened = document.querySelector(".popup_opened");
-    closePopup(popupOpened);
-  }
 }
 
 function openProfilePopup() {
@@ -116,11 +108,14 @@ renderInitialCards();
 function handleCardSubmit(evt) {
   evt.preventDefault();
 
+  const formButtonPlace = popupPlaceElement.querySelector(".form__button");
+
   addCard({
     name: placeInputElement.value,
     link: imageInputElement.value,
   });
 
+  disableButton(formButtonPlace, validationConfig);
   closePlacePopup();
 }
 
