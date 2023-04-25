@@ -22,17 +22,8 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
-      <section class="elements">
-        <template id="card-template">
-          <article class="card">
-            <button class="card__delete-button" type="button"></button>
-            <img class="card__image" src="#" alt="#" />
-            <div class="card__text">
-              <h2 class="card__title"></h2>
-              <button class="card__like-button" type="button"></button>
-            </div>
-          </article>
-        </template>
+      <section class="cards__container">
+        <ul class="cards"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -48,24 +39,30 @@
               class="form__input form__input form__input_value_name"
               type="text"
               name="name"
-              id="name-profile"
+              id="name"
               placeholder="Имя"
               minlength="2"
               maxlength="40"
               required
             />
-            <span class="form__error" id="name-profile-error"></span>
+            <span
+              class="form__error form__error_type_name"
+              id="name-profile-error"
+            ></span>
             <input
               class="form__input form__input_value_job"
               type="text"
               name="job"
-              id="job-profile"
+              id="job"
               placeholder="Вид деятельности"
               minlength="2"
               maxlength="40"
               required
             />
-            <span class="form__error" id="job-profile-error"></span>
+            <span
+              class="form__error form__error_type_job"
+              id="job-profile-error"
+            ></span>
           </fieldset>
           <input
             class="form__button form__button_valid"
@@ -92,7 +89,10 @@
               maxlength="30"
               required
             />
-            <span class="form__error" id="name-place-error"></span>
+            <span
+              class="form__error form__error_type_name-place"
+              id="name-place-error"
+            ></span>
             <input
               class="form__input form__input_value_url-image"
               type="url"
@@ -100,7 +100,10 @@
               id="url-image"
               placeholder="Ссылка на картинку"
             />
-            <span class="form__error" id="url-image-error"></span>
+            <span
+              class="form__error form__error_type_url-image"
+              id="url-image-error"
+            ></span>
           </fieldset>
           <input
             class="form__button form__button_valid"
@@ -118,7 +121,18 @@
         <p class="popup__title"></p>
       </div>
     </div>
-    <script src="scripts/validation.js"></script>
-    <script src="scripts/index.js"></script>
+    <template id="cardTemplate">
+      <li class="card__list">
+        <article class="card">
+          <button class="card__delete-button" type="button"></button>
+          <img class="card__image" src="#" alt="#" />
+          <div class="card__text">
+            <h2 class="card__title"></h2>
+            <button class="card__like-button" type="button"></button>
+          </div>
+        </article>
+      </li>
+    </template>
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

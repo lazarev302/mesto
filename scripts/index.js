@@ -1,3 +1,5 @@
+import Card from "./Card.js";
+import FormValidation from "./FormValidation.js";
 //Попапы
 const popupProfileElement = document.querySelector(".popup_profile");
 const popupPlaceElement = document.querySelector(".popup_place");
@@ -34,8 +36,16 @@ const profileSubtitleElement = document.querySelector(".profile__subtitle");
 const enlargedImageElement = document.querySelector(".popup__enlarged-image");
 const imageCaptionElement = document.querySelector(".popup__title");
 // Карточки при загрузке страницы
-const cardsContanier = document.querySelector(".elements");
-const cardTemplate = cardsContanier.querySelector("#card-template").content;
+const cardsContanier = document.querySelector(".cards");
+const selectorTemplate = "#cardTemplate";
+// Валидация
+const validationConfig = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__button",
+  inactiveButtonClass: "form__button_invalid",
+  inputErrorClass: "form__input_error",
+  spanErrorClass: ".form__error_type_",
+};
 
 // Массив
 const initialCards = [
@@ -72,20 +82,22 @@ function openPopup(popup) {
 }
 //Редактирование профиля
 function openProfilePopup() {
+  formProfileValidation.resetError();
   openPopup(popupProfileElement);
   nameInputElement.value = profileTitleElement.textContent;
   jobInputElement.value = profileSubtitleElement.textContent;
 }
 //Новая карточка
 function openPlacePopup() {
+  formPlaceValidation.resetError();
   openPopup(popupPlaceElement);
 }
 //Масштабирование картинки
-function openImagePopup(evt) {
+function openImagePopup(data) {
   openPopup(popupImageElement);
-  enlargedImageElement.src = evt.target.src;
-  enlargedImageElement.alt = evt.target.alt;
-  imageCaptionElement.textContent = evt.target.alt;
+  enlargedImageElement.src = data.link;
+  enlargedImageElement.alt = data.name;
+  imageCaptionElement.textContent = data.name;
 }
 
 //Универсальная функция закрытия
@@ -113,54 +125,36 @@ function closeProfilePopup() {
 //Новая карточка
 function closePlacePopup() {
   closePopup(popupPlaceElement);
-  formPlaceElement.reset();
-}
-//Масштабирование картинки
-function closeImagePopup() {
-  closePopup(popupImageElement);
 }
 
 // Клонирование карточек
-function createCard(data) {
-  const cloneElement = cardTemplate.cloneNode(true);
-  const image = cloneElement.querySelector(".card__image");
-  const title = cloneElement.querySelector(".card__title");
-
-  title.textContent = data.name;
-  image.src = data.link;
-  image.alt = data.name;
-
-  const likeElement = cloneElement.querySelector(".card__like-button");
-  likeElement.addEventListener("click", activeLike);
-
-  const deliteElement = cloneElement.querySelector(".card__delete-button");
-  deliteElement.addEventListener("click", hendleDelete);
-
-  const enlargedImageElement = cloneElement.querySelector(".card__image");
-  enlargedImageElement.addEventListener("click", openImagePopup);
-
-  return cloneElement;
+function createNewCard(item) {
+  const newCard = new Card(item, selectorTemplate, openImagePopup);
+  const card = newCard.createCard();
+  return card;
 }
-//Создание
-function addCard(element) {
-  const newCard = createCard(element);
+
+//Создание контейнера
+function addCard(cardsContanier, newCard) {
   cardsContanier.prepend(newCard);
 }
-//Отрисовка
-function render() {
-  initialCards.forEach(addCard);
-}
 
+//Создание карточек из массива
+function render() {
+  initialCards.forEach((item) => {
+    addCard(cardsContanier, createNewCard(item));
+  });
+}
 render();
-//Отправка карточки
+
+//Создание новой карточки
 function handleCardSubmit(evt) {
   evt.preventDefault();
-  const formButtonPlace = popupPlaceElement.querySelector(".form__button");
-  addCard({
+  const cardName = {
     name: placeInputElement.value,
     link: imageInputElement.value,
-  });
-  disableButton(formButtonPlace, validationConfig);
+  };
+  addCard(cardsContanier, createNewCard(cardName));
   closePlacePopup();
 }
 //Отправка формы редактирования профиля
@@ -171,23 +165,28 @@ function handleFormSubmit(evt) {
   closeProfilePopup();
 }
 
-// Удаление
-function hendleDelete(evt) {
-  evt.target.closest(".card").remove();
-}
+//Создание классов валидации для каждой формы
+const formProfileValidation = new FormValidation(
+  validationConfig,
+  formProfileElement
+);
+const formPlaceValidation = new FormValidation(
+  validationConfig,
+  formPlaceElement
+);
 
-//Лайк
-function activeLike(evt) {
-  evt.target.classList.toggle("card__like-button_active");
-}
-
-//Слушатели
+//Валидация форм
+formProfileValidation.enableValidation();
+formPlaceValidation.enableValidation();
+//Открытие форм
 popupProfileOpenButtonElement.addEventListener("click", openProfilePopup);
 popupPlaceOpenButtonElement.addEventListener("click", openPlacePopup);
+//Отправка форм
 formProfileElement.addEventListener("submit", handleFormSubmit);
 formPlaceElement.addEventListener("submit", handleCardSubmit);
-popupCloseButton.forEach((element) => {
-  const closeElements = element.closest(".popup");
-  element.addEventListener("click", () => closePopup(closeElements));
+//Закрытие форм
+popupCloseButton.forEach((item) => {
+  const closeElements = item.closest(".popup");
+  item.addEventListener("click", () => closePopup(closeElements));
   closeElements.addEventListener("mousedown", closePopupOverlay);
 });
