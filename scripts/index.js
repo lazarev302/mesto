@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import FormValidation from "./FormValidation.js";
+import initialCards from "./constants.js";
 //Попапы
 const popupProfileElement = document.querySelector(".popup_profile");
 const popupPlaceElement = document.querySelector(".popup_place");
@@ -47,49 +48,21 @@ const validationConfig = {
   spanErrorClass: ".form__error_type_",
 };
 
-// Массив
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
 //Универсальная функция открытия
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEsc);
+  document.addEventListener("keydown", closePopupByEsc);
 }
 //Редактирование профиля
 function openProfilePopup() {
-  formProfileValidation.resetError();
+  formProfileValidation.resetValidation();
   openPopup(popupProfileElement);
   nameInputElement.value = profileTitleElement.textContent;
   jobInputElement.value = profileSubtitleElement.textContent;
 }
 //Новая карточка
 function openPlacePopup() {
-  formPlaceValidation.resetError();
+  formPlaceValidation.resetValidation();
   openPopup(popupPlaceElement);
 }
 //Масштабирование картинки
@@ -103,17 +76,17 @@ function openImagePopup(data) {
 //Универсальная функция закрытия
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupEsc);
+  document.removeEventListener("keydown", closePopupByEsc);
 }
 //Закрытие клавишей Esc
-function closePopupEsc(evt) {
+function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
     closePopup(popup);
   }
 }
 //Закрытие кликом на Overlay
-function closePopupOverlay(evt) {
+function closePopupByOverlay(evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.target);
   }
@@ -140,12 +113,12 @@ function addCard(cardsContanier, newCard) {
 }
 
 //Создание карточек из массива
-function render() {
+function renderInitialCards() {
   initialCards.forEach((item) => {
     addCard(cardsContanier, createNewCard(item));
   });
 }
-render();
+renderInitialCards();
 
 //Создание новой карточки
 function handleCardSubmit(evt) {
@@ -186,7 +159,7 @@ formProfileElement.addEventListener("submit", handleFormSubmit);
 formPlaceElement.addEventListener("submit", handleCardSubmit);
 //Закрытие форм
 popupCloseButton.forEach((item) => {
-  const closeElements = item.closest(".popup");
-  item.addEventListener("click", () => closePopup(closeElements));
-  closeElements.addEventListener("mousedown", closePopupOverlay);
+  const closeButtonPopup = item.closest(".popup");
+  item.addEventListener("click", () => closePopup(closeButtonPopup));
+  closeButtonPopup.addEventListener("mousedown", closePopupByOverlay);
 });

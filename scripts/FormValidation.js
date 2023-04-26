@@ -6,7 +6,7 @@ export default class FormValidation {
     this._inactiveButtonClass = validationConfig.inactiveButtonClass;
     this._inputErrorClass = validationConfig.inputErrorClass;
     this._spanErrorClass = validationConfig.spanErrorClass;
-    this._formInputs = form.querySelectorAll(this._inputSelector);
+    this._formInputs = Array.from(form.querySelectorAll(this._inputSelector));
     this._formButton = form.querySelector(this._submitButtonSelector);
   }
 
@@ -45,14 +45,14 @@ export default class FormValidation {
   }
   //Проверка на наличие невалидных полей
   _hasInvalidInput() {
-    return Array.from(this._formInputs).some((item) => !item.validity.valid);
+    return this._formInputs.some((item) => !item.validity.valid);
   }
 
   _toggleFormButton() {
     if (this._hasInvalidInput()) {
-      this._disableButton(this._formButton);
+      this._disableButton();
     } else {
-      this._enableButton(this._formButton);
+      this._enableButton();
     }
   }
 
@@ -68,7 +68,7 @@ export default class FormValidation {
     this._formButton.disabled = true;
   }
   //Сброс ошибок
-  resetError() {
+  resetValidation() {
     this._formInputs.forEach((input) => {
       const currentInputErrorContanier = this._form.querySelector(
         `${this._spanErrorClass}${input.name}`
