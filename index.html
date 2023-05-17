@@ -32,7 +32,7 @@
     <div class="popup popup_profile">
       <div class="popup__contanier">
         <button class="popup__close-button" type="button"></button>
-        <form novalidate class="form" name="form">
+        <form novalidate class="form" name="formProfile">
           <h2 class="form__heading">Редактировать профиль</h2>
           <fieldset class="form__date">
             <input
@@ -76,32 +76,32 @@
     <div class="popup popup_place">
       <div class="popup__contanier">
         <button class="popup__close-button" type="button"></button>
-        <form novalidate class="form" name="form">
+        <form novalidate class="form" name="formPlace">
           <h2 class="form__heading">Новое место</h2>
           <fieldset class="form__date">
             <input
-              class="form__input form__input_value_name-place"
+              class="form__input form__input_value_title"
               type="text"
-              name="name-place"
-              id="name-place"
+              name="title"
+              id="title"
               placeholder="Название"
               minlength="2"
               maxlength="30"
               required
             />
             <span
-              class="form__error form__error_type_name-place"
+              class="form__error form__error_type_title"
               id="name-place-error"
             ></span>
             <input
               class="form__input form__input_value_url-image"
               type="url"
-              name="url-image"
-              id="url-image"
+              name="link"
+              id="link"
               placeholder="Ссылка на картинку"
             />
             <span
-              class="form__error form__error_type_url-image"
+              class="form__error form__error_type_link"
               id="url-image-error"
             ></span>
           </fieldset>
@@ -133,6 +133,6 @@
         </article>
       </li>
     </template>
-    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

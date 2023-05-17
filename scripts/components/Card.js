@@ -1,8 +1,8 @@
 export default class Card {
-  constructor(data, selectorTemplate, openImagePopup) {
-    this._data = data;
-    this._link = data.link;
-    this._name = data.name;
+  constructor(cardData, selectorTemplate, openImagePopup) {
+    this._cardData = cardData;
+    this._link = cardData.link;
+    this._name = cardData.title;
     this._selectorTemplate = selectorTemplate;
     this._openImagePopup = openImagePopup;
   }
@@ -17,7 +17,7 @@ export default class Card {
   }
 
   _hendleOpenImagePopup = () => {
-    this._openImagePopup(this._data);
+    this._openImagePopup(this._cardData);
   };
 
   createCard() {
