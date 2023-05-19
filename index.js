@@ -46,13 +46,12 @@ const popupPlace = new PopupWithForm(popupPlaceSelector, (evt) => {
   popupPlace.close();
 });
 
-//Редактирование профиля
 function openProfilePopup() {
   formsValidation.formProfile.resetValidation();
   popupProfile.setInputsValue(userInfo.getUserInfo());
   popupProfile.open();
 }
-//Новая карточка
+
 function openPlacePopup() {
   formsValidation.formPlace.resetValidation();
   popupPlace.open();
