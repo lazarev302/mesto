@@ -18,13 +18,10 @@ import {
   formsValidation,
 } from "./scripts/utils/constants.js";
 
-// Профиль
 const userInfo = new UserInfo(infoProfileConfig);
 
-// Закрытие по Esc и Overlay
 const popupImage = new PopupWithImage(popupImageSelector);
 
-//Создание карточек
 const section = new Section(
   {
     items: initialCards,
@@ -49,23 +46,6 @@ const popupPlace = new PopupWithForm(popupPlaceSelector, (evt) => {
   popupPlace.close();
 });
 
-Array.from(document.forms).forEach((item) => {
-  const form = new FormValidation(validationConfig, item);
-  const name = item.getAttribute("name");
-  formsValidation[name] = form;
-  form.enableValidation();
-});
-
-console.log(formsValidation);
-
-popupProfile.setEventListeners();
-popupPlace.setEventListeners();
-popupImage.setEventListeners();
-
-//Открытие форм
-popupProfileOpenButtonElement.addEventListener("click", openProfilePopup);
-popupPlaceOpenButtonElement.addEventListener("click", openPlacePopup);
-
 //Редактирование профиля
 function openProfilePopup() {
   formsValidation.formProfile.resetValidation();
@@ -77,3 +57,17 @@ function openPlacePopup() {
   formsValidation.formPlace.resetValidation();
   popupPlace.open();
 }
+
+Array.from(document.forms).forEach((item) => {
+  const form = new FormValidation(validationConfig, item);
+  const name = item.getAttribute("name");
+  formsValidation[name] = form;
+  form.enableValidation();
+});
+
+popupProfile.setEventListeners();
+popupPlace.setEventListeners();
+popupImage.setEventListeners();
+
+popupProfileOpenButtonElement.addEventListener("click", openProfilePopup);
+popupPlaceOpenButtonElement.addEventListener("click", openPlacePopup);

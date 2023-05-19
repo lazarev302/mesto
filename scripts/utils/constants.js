@@ -1,4 +1,3 @@
-// Массив
 const initialCards = [
   {
     title: "Архыз",
