@@ -1,10 +1,10 @@
-import "./pages/index.css";
-import Card from "./components/Card.js";
-import FormValidation from "./components/FormValidation.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import Section from "./components/Section.js";
-import UserInfo from "./components/UserInfo.js";
-import PopupWithForm from "./components/PopupWithForm.js";
+import "./index.css";
+import Card from "../components/Card.js";
+import FormValidation from "../components/FormValidation.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import {
   initialCards,
   popupProfileOpenButtonElement,
@@ -17,34 +17,35 @@ import {
   infoProfileConfig,
   validationConfig,
   formsValidation,
-} from "./utils/constants.js";
+} from "../utils/constants.js";
 
 const userInfo = new UserInfo(infoProfileConfig);
 
 const popupImage = new PopupWithImage(popupImageSelector);
 
+function createNewCard(element) {
+  const newCard = new Card(element, selectorTemplate, popupImage.open);
+  return newCard.createCard();
+}
+
 const section = new Section(
   {
     items: initialCards,
     renderer: (element) => {
-      const newCard = new Card(element, selectorTemplate, popupImage.open);
-      return newCard.createCard();
+      section.addItem(createNewCard(element));
     },
   },
   listElementsSelector
 );
+
 section.addCardByArray();
 
-const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
-  evt.preventDefault();
-  userInfo.setUserInfo(popupProfile.getInputsValue());
-  popupProfile.close();
+const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
+  userInfo.setUserInfo(data);
 });
 
-const popupPlace = new PopupWithForm(popupPlaceSelector, (evt) => {
-  evt.preventDefault();
-  section.addItem(section.renderer(popupPlace.getInputsValue()));
-  popupPlace.close();
+const popupPlace = new PopupWithForm(popupPlaceSelector, (data) => {
+  section.addItem(createNewCard(data));
 });
 
 function openProfilePopup() {
