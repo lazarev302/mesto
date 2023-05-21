@@ -3,17 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/header__logo.svg" alt="Логотип" />
+      <img
+        src="<%=require('./images/header__logo.svg')%>"
+        alt="Логотип"
+        class="header__logo"
+      />
+      <!-- <img class="header__logo" src="./images/header__logo.svg" alt="Логотип" /> -->
     </header>
     <main class="main">
       <section class="profile">
         <div class="profile__data">
-          <img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар" />
+          <img
+            src="<%=require('./images/Avatar.jpg')%>"
+            alt="Аватар"
+            class="profile__avatar"
+          />
+          <!-- <img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар" /> -->
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
@@ -133,6 +143,6 @@
         </article>
       </li>
     </template>
-    <script type="module" src="./index.js"></script>
+    <!-- <script type="module" src="./pages/index.js"></script> -->
   </body>
 </html>

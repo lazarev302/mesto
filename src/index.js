@@ -1,9 +1,10 @@
-import Card from "./scripts/components/Card.js";
-import FormValidation from "./scripts/components/FormValidation.js";
-import PopupWithImage from "./scripts/components/PopupWithImage.js";
-import Section from "./scripts/components/Section.js";
-import UserInfo from "./scripts/components/UserInfo.js";
-import PopupWithForm from "./scripts/components/PopupWithForm.js";
+import "./pages/index.css";
+import Card from "./components/Card.js";
+import FormValidation from "./components/FormValidation.js";
+import PopupWithImage from "./components/PopupWithImage.js";
+import Section from "./components/Section.js";
+import UserInfo from "./components/UserInfo.js";
+import PopupWithForm from "./components/PopupWithForm.js";
 import {
   initialCards,
   popupProfileOpenButtonElement,
@@ -16,7 +17,7 @@ import {
   infoProfileConfig,
   validationConfig,
   formsValidation,
-} from "./scripts/utils/constants.js";
+} from "./utils/constants.js";
 
 const userInfo = new UserInfo(infoProfileConfig);
 
