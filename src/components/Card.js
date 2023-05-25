@@ -1,10 +1,11 @@
 export default class Card {
-  constructor(cardData, selectorTemplate, openImagePopup) {
+  constructor(cardData, selectorTemplate, openImagePopup, openDeleteCard) {
     this._cardData = cardData;
     this._link = cardData.link;
     this._name = cardData.title;
     this._selectorTemplate = selectorTemplate;
     this._openImagePopup = openImagePopup;
+    this._openDeleteCard = openDeleteCard;
   }
 
   _getTemplate() {
@@ -19,6 +20,10 @@ export default class Card {
   _hendleOpenImagePopup = () => {
     this._openImagePopup(this._cardData);
   };
+
+  removeCard() {
+    this._cloneElement.remove();
+  }
 
   createCard() {
     this._cloneElement = this._getTemplate();
@@ -48,6 +53,6 @@ export default class Card {
 
   // Удаление
   _hendleDelete = () => {
-    this._cloneElement.remove();
+    this._openDeleteCard(this);
   };
 }

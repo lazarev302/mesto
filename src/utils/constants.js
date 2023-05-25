@@ -31,12 +31,17 @@ const popupProfileOpenButtonElement = document.querySelector(
 const popupPlaceOpenButtonElement = document.querySelector(
   ".profile__add-button"
 );
+const popupAvatarOpenButtinElevent = document.querySelector(
+  ".profile__avatar-button"
+);
 
 const selectorTemplate = "#cardTemplate";
 const popupProfileSelector = ".popup_profile";
 const popupPlaceSelector = ".popup_place";
 const popupImageSelector = ".popup_image";
 const listElementsSelector = ".cards";
+const popupAvatarSelector = ".popup_avatar";
+const popupDeleteSelector = ".popup__delete";
 
 const formsValidation = {};
 
@@ -57,11 +62,14 @@ export {
   initialCards,
   popupProfileOpenButtonElement,
   popupPlaceOpenButtonElement,
+  popupAvatarOpenButtinElevent,
   selectorTemplate,
   popupProfileSelector,
   popupPlaceSelector,
   popupImageSelector,
   listElementsSelector,
+  popupAvatarSelector,
+  popupDeleteSelector,
   infoProfileConfig,
   validationConfig,
   formsValidation,
