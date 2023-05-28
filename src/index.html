@@ -19,16 +19,12 @@
       <section class="profile">
         <div class="profile__data">
           <button class="profile__avatar-button" type="button">
-            <img
-              src="<%=require('./images/Avatar.jpg')%>"
-              alt="Аватар"
-              class="profile__avatar"
-            />
+            <img src="#" alt="Аватар" class="profile__avatar" />
           </button>
           <!-- <img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар" /> -->
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <p class="profile__subtitle">Исследователь океана</p>
+            <h1 class="profile__title"></h1>
+            <p class="profile__subtitle"></p>
             <button class="profile__edit-button" type="button"></button>
           </div>
         </div>
@@ -50,15 +46,15 @@
             <input
               class="form__input form__input form__input_value_name"
               type="text"
-              name="name"
-              id="name"
+              name="username"
+              id="username"
               placeholder="Имя"
               minlength="2"
               maxlength="40"
               required
             />
             <span
-              class="form__error form__error_type_name"
+              class="form__error form__error_type_username"
               id="name-profile-error"
             ></span>
             <input
@@ -76,12 +72,10 @@
               id="job-profile-error"
             ></span>
           </fieldset>
-          <input
+          <button
             class="form__button form__button_valid"
-            type="submit"
-            name="Сохранить"
-            value="Сохранить"
-          />
+            value="Сохранить">Сохранить</button>
+
         </form>
       </div>
     </div>
@@ -117,12 +111,10 @@
               id="url-image-error"
             ></span>
           </fieldset>
-          <input
+          <button
             class="form__button form__button_valid"
             type="submit"
-            name="Создать"
-            value="Создать"
-          />
+          >Создать</button>
         </form>
       </div>
     </div>
@@ -152,12 +144,10 @@
               id="url-image-error"
             ></span>
           </fieldset>
-          <input
+          <button
             class="form__button form__button_valid"
             type="submit"
-            name="Сохранить"
-            value="Сохранить"
-          />
+          >Сохранить</button>
         </form>
       </div>
     </div>
@@ -167,12 +157,10 @@
         <button class="popup__close-button" type="button"></button>
         <form novalidate class="form" name="formDelete">
           <h2 class="form__heading">Вы уверенны?</h2>
-          <input
+          <button
             class="form__button form__button_valid"
             type="submit"
-            name="Да"
-            value="Да"
-          />
+          >Да</button>
         </form>
       </div>
     </div>
@@ -184,7 +172,10 @@
           <img class="card__image" src="#" alt="#" />
           <div class="card__text">
             <h2 class="card__title"></h2>
-            <button class="card__like-button" type="button"></button>
+            <div class="card__like-group">
+              <button class="card__like-button" type="button"></button>
+              <span class="card__like-counter"></span>
+            </div>
           </div>
         </article>
       </li>

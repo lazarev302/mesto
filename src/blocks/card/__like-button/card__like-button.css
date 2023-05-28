@@ -1,8 +1,5 @@
 .card__like-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20px;
+  margin: 0;
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
   border: 0;
