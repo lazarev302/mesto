@@ -14,7 +14,7 @@ const popupPlaceSelector = ".popup_place";
 const popupImageSelector = ".popup_image";
 const listElementsSelector = ".cards";
 const popupAvatarSelector = ".popup_avatar";
-const popupDeleteSelector = ".popup__delete";
+const popupDeleteSelector = ".popup_delete";
 
 const formsValidation = {};
 
