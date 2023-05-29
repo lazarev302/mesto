@@ -78,7 +78,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
     .catch((error) =>
       console.error(`Ошибка при редактировании профиля ${error}`)
     )
-    .finally(() => popupProfile.textButtonLoading());
+    .finally(() => popupProfile.renderLoading(false));
 });
 
 const userInfo = new UserInfo(infoProfileConfig);
@@ -95,21 +95,22 @@ const deleteCard = new PopupDeleteCard(
         deleteCard.close();
       })
       .catch((error) => console.error(`Ошибка при удалении карточки ${error}`))
-      .finally(() => deleteCard.textButtonLoading());
+      .finally(() => deleteCard.renderLoading(false));
   }
 );
 
 const popupPlace = new PopupWithForm(popupPlaceSelector, (data) => {
-  Promise.all([api.getInfo(), api.addCard(data)])
-    .then(([dataUser, dataCard]) => {
-      dataCard.myid = dataUser._id;
+  api
+    .addCard(data)
+    .then((dataCard) => {
+      dataCard.myid = userInfo.getId();
       section.addItem(createNewCard(dataCard));
       popupPlace.close();
     })
     .catch((error) =>
       console.error(`Ошибка при создании новой карточки ${error}`)
     )
-    .finally(() => popupPlace.textButtonLoading());
+    .finally(() => popupPlace.renderLoading(false));
 });
 
 const popupAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
@@ -124,7 +125,7 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
       popupAvatar.close();
     })
     .catch((error) => console.error(`Ошибка при обновлении аватара ${error}`))
-    .finally(() => popupAvatar.textButtonLoading());
+    .finally(() => popupAvatar.renderLoading(false));
 });
 
 function openProfilePopup() {
@@ -166,7 +167,8 @@ Promise.all([api.getInfo(), api.getCards()])
       job: dataUser.about,
       avatar: dataUser.avatar,
     });
-    section.addCardByArray(dataCard.reverse());
+    userInfo.setId(dataUser._id);
+    section.renderItems(dataCard.reverse());
   })
   .catch((error) =>
     console.error(`Ошибка при создании начальных данных ${error}`)
